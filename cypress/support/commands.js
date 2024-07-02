@@ -1,3 +1,22 @@
+Cypress.Commands.add('login', () => {
+    cy.get('[data-cy="login-email"]').type(Cypress.env("email"));
+    cy.get('[data-cy="login-password"]').type(Cypress.env("senha"));
+    cy.get('[data-cy="login-submit"]').click();
+
+})
+
+Cypress.Commands.add('procedimentoInicial', () => {
+    cy.visit('https://www.kasa.live');
+    cy.get('[data-cy="btn-trigger-profile"]', { timeout: 10000 }).click();
+
+        // Verifica se o botão de Logout existe, se existir, já está logado, se não houver, fazer o login
+    cy.get('body').then(($body) => {
+        if ($body.find('[data-cy="btn-logout-profile"]').length === 0) {
+                cy.login();
+        } 
+    });
+})
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
