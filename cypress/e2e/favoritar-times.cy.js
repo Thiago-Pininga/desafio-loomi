@@ -48,7 +48,7 @@ describe('Favoritar Partidas e Times', () => {
 
     cy.wait(3000)
 
-    cy.get('[aria-label="Favoritar Partida"] > .chakra-image').click()
+    cy.get('[aria-label="Favoritar Partida"] > .chakra-image').first().click()
 
     cy.wait(4000)
 
