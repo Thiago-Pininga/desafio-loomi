@@ -21,7 +21,7 @@ Siga os passos abaixo para configurar e rodar os testes:
 1. **Clone o repositório:**
 
    ```bash
-   https://github.com/Thiago-Pininga/desafio-loomi.git
+   git clone https://github.com/Thiago-Pininga/desafio-loomi.git
    cd desafio-loomi
    ```
 
@@ -31,7 +31,16 @@ Siga os passos abaixo para configurar e rodar os testes:
     ```
 ## Executando os Testes
 
-1. Abra o Cypress:
+1. Abra a pasta do arquivo com o Visual Studio Code e crie um arquivo chamado `cypress.env.json` e complete ele com a seguinte estrutura
+
+    ```
+    {
+        "email": "emailDaConta@email.com",
+        "senha": "SuaSenha"
+    }
+    ```
+
+2. Abra o Cypress:
 
     ```bash
     npx cypress open
@@ -39,7 +48,7 @@ Siga os passos abaixo para configurar e rodar os testes:
 
     Isso abrirá a interface do Cypress, onde você pode selecionar e rodar os testes manualmente.
 
-2. Rodar todos os testes em modo headless:
+    ***Rodar todos os testes em modo headless:***
 
     ```bash
     npx cypress run
