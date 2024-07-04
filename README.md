@@ -1,5 +1,3 @@
-Dificuldades em entender as requisições e o funcionamento do cypress com as APIs
-
 # Testes Automatizados de Aplicativo
 
 Este repositório contém testes automatizados para validar as funcionalidades do aplicativo usando Cypress.
@@ -23,8 +21,8 @@ Siga os passos abaixo para configurar e rodar os testes:
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
+   https://github.com/Thiago-Pininga/desafio-loomi.git
+   cd desafio-loomi
    ```
 
 2. **Instale as dependências:**
@@ -92,3 +90,7 @@ Os testes cobrem os seguintes cenários:
 2. Filtrar por Times
 
 3. Filtrar por Campeonato
+
+# Dificuldades e obstaculos
+
+Tive algumas dificuldades em entender o funcionamento do Cypress com a API usada 
