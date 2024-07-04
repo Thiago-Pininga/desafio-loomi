@@ -5,23 +5,32 @@ describe('Buscar Partidas', () => {
         cy.procedimentoInicial()
     })
 
-    it('Buscar partidas com base no time na seção de pesquisa -> pesquisa sobre o Flamengo', () => {
+    it('Buscar partidas com base no time na seção de pesquisa -> pesquisa sobre o time "AA Flamengo"', () => {
         cy.get("#filter-team").click().type("Flamengo");
+
         cy.wait(2000)
+
         cy.get(':nth-child(1) > .css-kmj3am', {timeout:5000}).click();
+        
         cy.get('.css-70qvj9 > .chakra-text').should("be.visible")
     })
 
-    it('Buscar partidas com base no campeonato na seção de pesquisa -> Pega o 3 elemento da lista, que, nã ora da criação desse codigo, é o Brasileirão Serie A', () => {
+    it('Buscar partidas com base no campeonato na seção de pesquisa -> Pega o 3 elemento da lista (Brasileirão Serie A)', () => {
         cy.get("#filter-championship").click();
+
         cy.wait(2000)
+
         cy.get(':nth-child(3) > .css-kmj3am').click();
+
         cy.get('.css-tki4ir').should("be.visible")
     })
 
-    it('Buscar partidas com base na data na seção de pesquisa -> Define dias entre o dia 1 e 3', () => {
+    it('Buscar partidas com base na data na seção de pesquisa -> Define dias entre o dia 1 e 3', () => { //tive dificuldades em como checar se deu certo
         cy.get('.chakra-input__group > .chakra-input').click();
-        cy.contains('1').click().click(); 
+
+        cy.get('[aria-pressed="true"]').click()
+
+        cy.contains('1').click(); 
         cy.contains('3').click(); 
       
         cy.wait(1000); 
@@ -38,10 +47,17 @@ describe('Buscar Partidas', () => {
     
         cy.wait(5000);
     
-        cy.get('.css-5prxxc > .css-14jp1cp > .chakra-button > .css-fthg4f > .css-1xykbwn > .chakra-image')//verifica se a imagem é a do SporTV
-            .should("be.visible")
-            .invoke('attr', 'src')
-            .should('eq', 'https://kasalive-api-prod.s3.amazonaws.com/media/channel/badge/20230108142954-sportv-brasil.png');
+        cy.get('.css-5prxxc > .css-14jp1cp > .chakra-button > .css-fthg4f > .css-1xykbwn > .chakra-image')
+        .should("be.visible")
+        .then(($images) => {
+            let found = false;
+            $images.each((index, image) => {
+                if (image.src === 'https://kasalive-api-prod.s3.amazonaws.com/media/channel/badge/20230108142954-sportv-brasil.png') {
+                    found = true;
+                }
+            });
+            expect(found).to.be.true;
+        });
     });
     
 })

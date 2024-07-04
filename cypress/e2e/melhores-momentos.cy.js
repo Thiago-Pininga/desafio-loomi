@@ -23,9 +23,15 @@ describe('Melhores momentos', () => {
 
     cy.get('#accordion-panel-\\:r83\\: > .css-1kkkyed > .css-1jcxtgh > .chakra-input__group > .chakra-input').type('Flamengo')
 
-    cy.get('.css-1lekzkb > .chakra-checkbox > .chakra-checkbox__control').eq(3).click()
+    cy.get('.css-1lekzkb > .chakra-checkbox > .chakra-checkbox__control')
+      .eq(3) 
+      .click()
 
-    cy.get(':nth-child(1) > .css-1xfi7k7').should('contain.text', 'Flamengo')
+    cy.get(':nth-child(1) > .css-1xfi7k7')
+      .should(
+        'contain.text',
+        'Flamengo'
+      )
   })
 
   it("Deve acessar a pagina de melhores momentos e filtrar por campeonato", () => {
@@ -41,10 +47,16 @@ describe('Melhores momentos', () => {
 
     cy.wait(1000)
 
-    cy.get('.css-1lekzkb > .chakra-checkbox > .chakra-checkbox__control').first().click({force:true})
+    cy.get('.css-1lekzkb > .chakra-checkbox > .chakra-checkbox__control')
+      .first()
+      .click({force:true})
 
     cy.wait(4000)
 
-    cy.get(':nth-child(1) > .css-onb711').should('contain.text', 'Copa América')
+    cy.get(':nth-child(1) > .css-onb711')
+      .should(
+        'contain.text',
+        'Copa América'
+      )
   })
 })

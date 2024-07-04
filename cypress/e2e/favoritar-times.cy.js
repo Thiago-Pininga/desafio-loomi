@@ -20,27 +20,25 @@ describe('Favoritar Partidas e Times', () => {
 
     cy.get('[data-cy="input-search-teams"]').type("Flamengo");
 
-    cy.get('.css-1bntj9o > .chakra-button').first().click({force:true});
+    cy.get('.css-1bntj9o > .chakra-button')
+      .first()
+      .click({force:true});
 
     cy.get('[data-cy="btn-submit-teams"]').click();
 
-    cy.wait(1000)
-
-    cy.contains("AA Flamengo").should("be.visible")
+    cy.contains("AA Flamengo", { timeout:5000 }).should("be.visible")
   })
 
   it('Deve "desfavoritar" o time anteriormente favoritado',() => {
     cy.get('[data-cy="link/favoritos"]').click();
 
-    cy.get('[data-cy="btn-edit-teams"]').click()
+    cy.get('[data-cy="btn-edit-teams"]', { timeout:6000 }).click()
 
     cy.get('.css-79elbk > .chakra-button').click()
 
     cy.get('[data-cy="btn-save-teams"]').click()
 
-    cy.wait(1000)
-
-    cy.contains("AA Flamengo").should("not.exist")
+    cy.contains("AA Flamengo", { timeout:5000 }).should("not.exist")
   })
 
   it('Deve "desfavoritar" a partida anteriormente favoritada', () => {
@@ -48,7 +46,9 @@ describe('Favoritar Partidas e Times', () => {
 
     cy.wait(3000)
 
-    cy.get('[aria-label="Favoritar Partida"] > .chakra-image').first().click()
+    cy.get('[aria-label="Favoritar Partida"] > .chakra-image')
+      .first()
+      .click()
 
     cy.wait(4000)
 
