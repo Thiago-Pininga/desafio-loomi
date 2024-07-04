@@ -13,7 +13,9 @@ describe('Marcar no Google Calendar', () => {
   })
 
   it("Deve marcar uma partida no calendario e verificar na seção de Calendário", () => {
-    cy.get('[aria-label="Adicionar ao calendário"] > .chakra-image').first().click()
+    cy.get('[aria-label="Adicionar ao calendário"] > .chakra-image')
+      .first()
+      .click()
 
     cy.get('[data-cy="link/calendario"]').click({force:true})
 
@@ -25,11 +27,15 @@ describe('Marcar no Google Calendar', () => {
 
     cy.wait(2000)
 
-    cy.get('.rbc-event-content').last().click()
+    cy.get('.rbc-event-content')
+      .last()
+      .click()
 
     cy.get('[id^="popover-trigger-"]').last().click();
 
-    cy.get('.css-1rcg3rs').last().click({force:true})
+    cy.get('.css-1rcg3rs')
+      .last()
+      .click({force:true})
 
     cy.get('[data-cy="alert-dialog-submit"]').click()
 
